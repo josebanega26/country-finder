@@ -33,6 +33,13 @@ $PHONE: "(max-width: 767px)";
 $TABLET: "(min-width: 768px) and (max-width: 1023px)";
 $DESKTOP: "(max-width: 1024px)";
 
-p{
-    font-family: $LIGHT-FONT;
+body,p,h1,h2{
+    font-family: $LIGHT-FONT!important;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.Nunito-Bold{
+    font-family: $BOLD-FONT!important;
 }

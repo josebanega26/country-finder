@@ -1,1 +1,38 @@
-/* You can add global styles to this file, and also import other style files */
+// - Dark Blue (Dark Mode Elements): hsl(209, 23%, 22%)
+// - Very Dark Blue (Dark Mode Background): hsl(207, 26%, 17%)
+// - Very Dark Blue (Light Mode Text): hsl(200, 15%, 8%)
+// - Dark Gray (Light Mode Input): hsl(0, 0%, 52%)
+// - Very Light Gray (Light Mode Background): hsl(0, 0%, 98%)
+// - White (Dark Mode Text & Light Mode Elements): hsl(0, 0%, 100%)
+
+// COLORS OF APP
+
+$LIGHT-BACKGROUND: hsl(0, 0%, 98%);
+$LIGHT-MODE-ELEMENTS: hsl(0, 0%, 100%);
+$LIGHT-FONT-TEXT: hsl(200, 15%, 8%);
+$DARK-BACKGROUND: hsl(207, 26%, 17%);
+$DARK-MODE-ELEMENTS: hsl(209, 23%, 22%);
+$INPUT-COLOR: hsl(0, 0%, 52%);
+
+
+@font-face {
+  font-family: 'Nunito-bold';
+  src: url('/assets/fonts/NunitoSans-Bold.ttf') format("truetype");
+  font-weight:500;
+}
+@font-face {
+  font-family: 'Nunito-light';
+  src: url('/assets/fonts/NunitoSans-Light.ttf') format("truetype");
+  font-weight:700;
+}
+$LIGHT-FONT: 'Nunito-light';
+$BOLD-FONT:'Nunito-bold';
+
+// BREAKPOINTS
+$PHONE: "(max-width: 767px)";
+$TABLET: "(min-width: 768px) and (max-width: 1023px)";
+$DESKTOP: "(max-width: 1024px)";
+
+p{
+    font-family: $LIGHT-FONT;
+}

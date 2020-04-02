@@ -6,12 +6,12 @@
   <ng-template #isLoaded>
     <mat-grid-list 
     [cols]="breakpoint" 
-    rowHeight="2:1"
+    rowHeight="1:1.2"
     (window:resize)="onResize($event)">
-         <mat-grid-tile *ngFor="let country of countries">
-           <mat-card class="card" >
-             {{country.name}}
-           </mat-card>
+         <mat-grid-tile *ngFor="let country of countries" >
+           <app-card [country]="country"
+           class="app_card">
+           </app-card>
          </mat-grid-tile>
     </mat-grid-list>
   </ng-template>

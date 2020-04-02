@@ -1,0 +1,12 @@
+<mat-card class="card" >
+     <img mat-card-image 
+     src="https://material.angular.io/assets/img/examples/shiba2.jpg" 
+     [src]="country.flag"
+     [alt]="country.name">
+      <mat-card-content>
+    <h3 class="Nunito-Bold"> {{country.name}}</h3>
+    <p><span class="Nunito-Bold">Population: </span>{{country.population}}</p>
+    <p><span class="Nunito-Bold">Region: </span>{{country.region}}</p>
+    <p><span class="Nunito-Bold">Capital: </span>{{country.capital}}</p>
+  </mat-card-content>
+</mat-card>

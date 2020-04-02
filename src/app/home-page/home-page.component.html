@@ -1,0 +1,11 @@
+<div *ngIf="isLoading;else isLoaded">
+    Loading
+</div>
+<ng-template #isLoaded>
+    <mat-grid-list [cols]="breakpoint" rowHeight="1:1.2" (window:resize)="onResize($event)">
+        <mat-grid-tile *ngFor="let country of countries">
+            <app-card [country]="country" class="app_card">
+            </app-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+</ng-template>

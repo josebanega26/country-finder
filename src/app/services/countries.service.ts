@@ -17,4 +17,8 @@ export class CountriesService {
   getCountryByName(name: string) {
     return this.http.get(`${API}/name/${name}${FIELDS}`);
   }
+
+  getCountryByCode(code: string) {
+    return this.http.get(`${API}/alpha/${code}`);
+  }
 }

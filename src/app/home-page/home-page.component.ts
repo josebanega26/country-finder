@@ -1,14 +1,14 @@
 import { Component, OnInit } from "@angular/core";
 import { CountriesService } from "../services/countries.service";
 import { Countries } from "../models/countries.model";
-
+import { Router } from '@angular/router';
 @Component({
   selector: "app-home-page",
   templateUrl: "./home-page.component.html",
   styleUrls: ["./home-page.component.scss"]
 })
 export class HomePageComponent implements OnInit {
-  constructor(private countriesService: CountriesService) { }
+  constructor(private countriesService: CountriesService, private router: Router) { }
   filterCountry: string = '';
   filterByRegion: string =''
   breakpoint: number = 4;
@@ -29,7 +29,15 @@ export class HomePageComponent implements OnInit {
   getAllCountries() {
     this.getAll();
   }
-
+  /**
+   * country details
+   */
+  goToDetail(event:string){
+      this.router.navigate(['/detail',event.toLowerCase()])
+  }
+  /**
+   * Resize Grid view
+   */
   getBreakpoint(): number {
     if (window.innerWidth >= 1024) {
       return 4;
@@ -48,6 +56,9 @@ export class HomePageComponent implements OnInit {
         ? 2
         : 1;
   }
+  /**
+   * Api Call for all the countries
+   */
   getAll() {
     this.isLoading = true;
     this.countriesService

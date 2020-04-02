@@ -27,7 +27,10 @@
     <mat-grid-list [cols]="breakpoint" rowHeight="1:1.2" (window:resize)="onResize($event)">
         <mat-grid-tile
             *ngFor="let country of countries |filter:filterByRegion:'region' | filter:filterCountry:'name'">
-            <app-card [country]="country" class="app_card">
+            <app-card 
+            [country]="country"
+            (click)="goToDetail(country.alpha3Code)"
+            class="app_card">
             </app-card>
         </mat-grid-tile>
     </mat-grid-list>

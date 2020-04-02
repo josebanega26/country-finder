@@ -1,4 +1,24 @@
+@import '../../styles.scss';
 .app_card{
     width: 75%;
-    
+    cursor: pointer;
+}
+.filters{
+    display: flex;
+    justify-content: space-between;
+    width: 94%;
+    margin: auto;
+    padding: 2rem 0;
+}
+.custom-select{
+    background: $LIGHT-MODE-ELEMENTS;
+    width: 145px;
+    padding: 0.25rem;
+    border: 1px solid $LIGHT-MODE-ELEMENTS;
+    border-radius: 5px;
+}
+.custom-input{
+    font-size: $LIGHT-FONT!important;
+    width: 35vw;
+    padding: 0 .5rem;
 }

@@ -1,9 +1,32 @@
+<div class="filters">
+    <input
+    class="custom-input Nunito-Light"
+    type="text" 
+    name="searchbox" 
+    [(ngModel)]="filterCountry"
+    placeholder="Search for a country..." />
+
+    <select
+    matNativeControl required
+    class="custom-select Nunito-Light"
+    aria-placeholder="Filter By Region" 
+    [(ngModel)]='filterByRegion'>
+        <option
+        class="Nunito-Light" 
+        *ngFor="let region of regions" 
+        [ngValue]="region.value">
+        {{region.viewValue}}</option
+        >
+    </select
+    >
+</div>
 <div *ngIf="isLoading;else isLoaded">
     Loading
 </div>
 <ng-template #isLoaded>
     <mat-grid-list [cols]="breakpoint" rowHeight="1:1.2" (window:resize)="onResize($event)">
-        <mat-grid-tile *ngFor="let country of countries">
+        <mat-grid-tile
+            *ngFor="let country of countries |filter:filterByRegion:'region' | filter:filterCountry:'name'">
             <app-card [country]="country" class="app_card">
             </app-card>
         </mat-grid-tile>

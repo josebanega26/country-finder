@@ -8,11 +8,20 @@ import { Countries } from "../models/countries.model";
   styleUrls: ["./home-page.component.scss"]
 })
 export class HomePageComponent implements OnInit {
-  constructor(private countriesService: CountriesService) {}
+  constructor(private countriesService: CountriesService) { }
+  filterCountry: string = '';
+  filterByRegion: string =''
   breakpoint: number = 4;
   countries: Countries[];
   isLoading: boolean = false;
-
+  regions: any[] = [
+    { value: '', viewValue: 'Filter By Region' },
+    { value: 'africa', viewValue: 'Africa' },
+    { value: 'america', viewValue: 'America' },
+    { value: 'asia', viewValue: 'Asia' },
+    { value: 'europe', viewValue: 'Europe' },
+    { value: 'oceania', viewValue: 'Oceania' },
+  ]
   ngOnInit() {
     this.breakpoint = this.getBreakpoint();
     this.getAll();
@@ -32,11 +41,12 @@ export class HomePageComponent implements OnInit {
   }
 
   onResize(event) {
-    event.target.innerWidth >= 1024
+    console.log('event', event.target.innerWidth)
+    this.breakpoint = event.target.innerWidth >= 1024
       ? 4
       : event.target.innerWidth >= 768 && window.innerWidth < 1023
-      ? 2
-      : 1;
+        ? 2
+        : 1;
   }
   getAll() {
     this.isLoading = true;

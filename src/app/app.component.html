@@ -1,5 +1,14 @@
 <app-header></app-header>
 <div class='body'>
-  App container
+  <div *ngIf="isLoading;else isLoaded">
+    Loading
+  </div>
+  <ng-template #isLoaded>
+    <div class="section_container">
+       <mat-card *ngFor="let country of countries">
+         {{country.name}}
+       </mat-card>
+    </div>
+  </ng-template>
 </div>
 <app-footer></app-footer>

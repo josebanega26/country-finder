@@ -1,11 +1,8 @@
 @import '../styles.scss';
 .body {
-    height: 80vh;
+    min-height: 80vh;
     background: $LIGHT-BACKGROUND;
 }
-.section_container{
-    display: flex;
-    width: 100%;
-    flex-direction: row;
-    flex-wrap: wrap;
+.card{
+    width: 50%;
 }

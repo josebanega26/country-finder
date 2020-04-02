@@ -4,11 +4,16 @@
     Loading
   </div>
   <ng-template #isLoaded>
-    <div class="section_container">
-       <mat-card *ngFor="let country of countries">
-         {{country.name}}
-       </mat-card>
-    </div>
+    <mat-grid-list 
+    [cols]="breakpoint" 
+    rowHeight="2:1"
+    (window:resize)="onResize($event)">
+         <mat-grid-tile *ngFor="let country of countries">
+           <mat-card class="card" >
+             {{country.name}}
+           </mat-card>
+         </mat-grid-tile>
+    </mat-grid-list>
   </ng-template>
 </div>
 <app-footer></app-footer>

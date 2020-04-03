@@ -1,30 +1,33 @@
-import { Component, OnInit } from "@angular/core";
-import { Router,ActivatedRoute } from "@angular/router";
+import { Component, OnInit, OnDestroy } from "@angular/core";
+import { Router, ActivatedRoute } from "@angular/router";
 import { CountriesService } from "../services/countries.service";
+import { Subscription } from "rxjs";
 @Component({
   selector: "app-country-detail-page",
   templateUrl: "./country-detail-page.component.html",
   styleUrls: ["./country-detail-page.component.scss"]
 })
-export class CountryDetailPageComponent implements OnInit {
+export class CountryDetailPageComponent implements OnInit, OnDestroy {
   constructor(
-    private route:Router,
+    private route: Router,
     private router: ActivatedRoute,
     private countriesService: CountriesService
   ) {}
-
+  paramsSubscription: Subscription;
   isLoading: boolean = false;
   country: any;
   codeOfCountry: string;
   ngOnInit(): void {
     this.codeOfCountry = this.router.snapshot.params["country"];
     this.getCountry(this.codeOfCountry);
-    this.router.params.subscribe(params => {
+    this.paramsSubscription = this.router.params.subscribe(params => {
       this.codeOfCountry = params["country"];
       this.getCountry(this.codeOfCountry);
     });
   }
-
+  ngOnDestroy() {
+    this.paramsSubscription.unsubscribe();
+  }
   getCountry(codeOfCountry: string) {
     this.isLoading = true;
     this.countriesService.getCountryByCode(codeOfCountry).subscribe(country => {
@@ -34,11 +37,11 @@ export class CountryDetailPageComponent implements OnInit {
     });
   }
 
-  goHome(){
-    this.route.navigate(['/'])
+  goHome() {
+    this.route.navigate(["/"]);
   }
 
-  goToBorder(border: string){
-    this.route.navigate(['/detail',border])
+  goToBorder(border: string) {
+    this.route.navigate(["/detail", border.toLocaleLowerCase()]);
   }
 }

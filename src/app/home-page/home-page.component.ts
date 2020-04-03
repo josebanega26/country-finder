@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit , OnDestroy } from "@angular/core";
 import { CountriesService } from "../services/countries.service";
 import { Countries } from "../models/countries.model";
 import { Router } from '@angular/router';
@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   templateUrl: "./home-page.component.html",
   styleUrls: ["./home-page.component.scss"]
 })
-export class HomePageComponent implements OnInit {
+export class HomePageComponent implements OnInit , OnDestroy {
   constructor(private countriesService: CountriesService, private router: Router) { }
   filterCountry: string = '';
   filterByRegion: string =''
@@ -25,6 +25,9 @@ export class HomePageComponent implements OnInit {
   ngOnInit() {
     this.breakpoint = this.getBreakpoint();
     this.getAll();
+  }
+  ngOnDestroy(){
+    
   }
   getAllCountries() {
     this.getAll();

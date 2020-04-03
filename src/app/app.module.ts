@@ -6,7 +6,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import { HttpClientModule } from '@angular/common/http';
 import {FormsModule} from '@angular/forms'
 import { Routes ,RouterModule} from '@angular/router';
-
+import {MatIconModule} from '@angular/material/icon';
 import {CountriesService} from '../app/services/countries.service'
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -39,6 +39,7 @@ const routes: Routes = [
     HttpClientModule,
     MatCardModule,
     MatGridListModule,
+    MatIconModule,
     RouterModule.forRoot(routes),
   ],
   providers: [CountriesService],

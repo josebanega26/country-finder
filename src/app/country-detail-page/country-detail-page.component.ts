@@ -17,6 +17,7 @@ export class CountryDetailPageComponent implements OnInit, OnDestroy {
   isLoading: boolean = false;
   country: any;
   codeOfCountry: string;
+  languages: string;
   ngOnInit(): void {
     this.codeOfCountry = this.router.snapshot.params["country"];
     this.getCountry(this.codeOfCountry);
@@ -33,10 +34,15 @@ export class CountryDetailPageComponent implements OnInit, OnDestroy {
     this.countriesService.getCountryByCode(codeOfCountry).subscribe(country => {
       this.isLoading = false;
       this.country = country;
+      this.formatingLanguage(this.country.languages);
       console.log("country", country);
     });
   }
 
+  formatingLanguage(languages: any[]){
+    const arrayLanguages:any[] = languages.map(item => item.name)
+    this.languages = arrayLanguages.join(', ')
+  }
   goHome() {
     this.route.navigate(["/"]);
   }

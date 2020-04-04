@@ -1,0 +1,64 @@
+@import '../../styles.scss';
+.main_container{
+    padding-top: 2rem;
+    .mat-grid-tile .mat-figure {
+   justify-content: flex-start !important ;
+   align-items: flex-start !important;
+}
+    .section_container{
+        display: flex;
+        width: 100%;
+        padding: 2rem 0;
+        flex-wrap: wrap;
+    
+        .section_item{
+            width: 50%;
+            @media (max-width:767px) {
+                width: 100%;
+                padding: 2rem 1rem;
+            }
+        }
+        .item_right{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .flag_container{
+            display: flex;
+            align-items: center;
+            img{
+                width: 40vw;
+                padding-left: 3.25rem;
+                @media (max-width:767px) {
+                    width: 100%;
+                    padding-left: 0;
+                }
+            }
+        }
+        .text_container{
+            display: grid;
+            grid-template-columns: auto auto;
+            grid-template-rows: 200px;
+            div{
+                display: flex;
+                flex-wrap: wrap;
+                flex-direction: column;
+                justify-content: center;
+            }
+        }
+    }
+    .button_section{
+        padding-left: 3.25rem;
+        @media (max-width:767px) {
+            padding-top: 1rem;
+            padding-left: 1rem;
+        }
+    }
+    .button{
+            
+            padding: 0.25rem 1.5rem;
+            border-radius: 5px;
+            background: $LIGHT-MODE-ELEMENTS;
+            border: 1px solid $INPUT-COLOR;
+        }
+}

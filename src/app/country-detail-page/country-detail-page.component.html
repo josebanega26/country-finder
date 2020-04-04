@@ -1,6 +1,44 @@
-<p>country-detail-page works!</p>
-<p>{{country.name}}</p>
-<button
-    (click)="goHome()">
-    Go home
-</button>
+<div class="main_container" *ngIf="!isLoading;else Loading">
+    <div class="button_section">
+        <button class="button Nunito-Light" (click)="goHome()">
+            Back
+        </button>
+    </div>
+    <div class="section_container">
+
+        <div class="section_item flag_container">
+            <img loading="lazy" [src]="country.flag" [alt]="country.name">
+        </div>
+        <div class="section_item item_right">
+            <h1 class="Nunito-Bold">{{country.name}}</h1>
+            <div class="text_container" >
+                <div > 
+                    <div>
+                        <p><span class="Nunito-Bold">Native name:</span>  {{country.nativeName}} </p>
+                        <p><span class="Nunito-Bold">Population:</span> {{country.population}}</p>
+                        <p><span class="Nunito-Bold">Region:</span> {{country.region}} </p>
+                        <p><span class="Nunito-Bold" >Sub Region:</span> {{country.subregion}} </p>
+                        <p><span class="Nunito-Bold" >Capital:</span> {{country.capital}} </p>
+
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <p><span class="Nunito-Bold">Top level Domain:</span> {{country.topLevelDomain[0]}} </p>
+                        <p><span class="Nunito-Bold">Currencies:</span> {{country.currencies[0].name}}</p>
+                        <p ><span class="Nunito-Bold">Language</span> {{languages}} </p>
+                    </div>
+                </div>
+            </div>
+            <div><span class="Nunito-Bold">Border Countries:</span>
+            <button class="button" style="margin-left: 0.25rem;" *ngFor="let border of country.borders">
+                {{border}}
+            </button>
+            </div>
+        </div>
+
+    </div>
+</div>
+<ng-template #Loading>
+    Loading...
+</ng-template>

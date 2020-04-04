@@ -1,9 +1,12 @@
 
 @import '../../styles.scss';
 .card{
-     max-width: 400px;
-     height: 320px;
-     @media (max-width:767px) {
+     height: 280px;
+     transition: 1s;
+     &:hover{
+         transform: translateY(-10px);
+     }
+     @media (max-width:1023px) {
          height: auto;
      }
 }
@@ -12,7 +15,11 @@ p{
 }
 img{
     height: 150px;
+    @media (max-width:1023px ) and (min-width: 768px){
+         height: 220px;
+     }
     @media (max-width:767px) {
          height: auto;
      }
+    
 }

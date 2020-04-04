@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
 import { CountriesService } from "../services/countries.service";
+import { Title} from '@angular/platform-browser';
 import { Subscription } from "rxjs";
 @Component({
   selector: "app-country-detail-page",
@@ -9,6 +10,7 @@ import { Subscription } from "rxjs";
 })
 export class CountryDetailPageComponent implements OnInit, OnDestroy {
   constructor(
+    private titleService: Title,
     private route: Router,
     private router: ActivatedRoute,
     private countriesService: CountriesService
@@ -31,8 +33,9 @@ export class CountryDetailPageComponent implements OnInit, OnDestroy {
   }
   getCountry(codeOfCountry: string) {
     this.isLoading = true;
-    this.countriesService.getCountryByCode(codeOfCountry).subscribe(country => {
+    this.countriesService.getCountryByCode(codeOfCountry).subscribe((country:any) => {
       this.isLoading = false;
+      this.titleService.setTitle(`Country Finder | Detail of ${country.name}`)
       this.country = country;
       this.formatingLanguage(this.country.languages);
       console.log("country", country);

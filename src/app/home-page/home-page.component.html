@@ -20,18 +20,18 @@
     </select
     >
 </div>
-<div *ngIf="isLoading;else isLoaded">
-    Loading
+<div *ngIf="isLoading;else isLoaded" class="loading_container">
+    <mat-spinner></mat-spinner>
 </div>
 <ng-template #isLoaded>
-    <mat-grid-list [cols]="breakpoint" rowHeight="1:1.2" (window:resize)="onResize($event)">
-        <mat-grid-tile
+    <div class="grid_container">
+        <div class="grid_item"
             *ngFor="let country of countries |filter:filterByRegion:'region' | filter:filterCountry:'name'">
             <app-card 
             [country]="country"
             (click)="goToDetail(country.alpha3Code)"
             class="app_card">
             </app-card>
-        </mat-grid-tile>
-    </mat-grid-list>
+        </div >
+    </div>
 </ng-template>

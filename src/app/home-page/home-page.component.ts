@@ -1,16 +1,20 @@
-import { Component, OnInit , OnDestroy } from "@angular/core";
+import { Component, OnInit, OnDestroy } from "@angular/core";
 import { CountriesService } from "../services/countries.service";
 import { Countries } from "../models/countries.model";
 import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 @Component({
   selector: "app-home-page",
   templateUrl: "./home-page.component.html",
   styleUrls: ["./home-page.component.scss"]
 })
-export class HomePageComponent implements OnInit , OnDestroy {
-  constructor(private countriesService: CountriesService, private router: Router) { }
+export class HomePageComponent implements OnInit, OnDestroy {
+  constructor(
+    private titleService: Title,
+    private countriesService: CountriesService,
+    private router: Router) { }
   filterCountry: string = '';
-  filterByRegion: string =''
+  filterByRegion: string = ''
   breakpoint: number = 4;
   countries: Countries[];
   isLoading: boolean = false;
@@ -23,11 +27,11 @@ export class HomePageComponent implements OnInit , OnDestroy {
     { value: 'oceania', viewValue: 'Oceania' },
   ]
   ngOnInit() {
-    this.breakpoint = this.getBreakpoint();
+    this.titleService.setTitle(`Country Finder | Home`)
     this.getAll();
   }
-  ngOnDestroy(){
-    
+  ngOnDestroy() {
+
   }
   getAllCountries() {
     this.getAll();
@@ -35,30 +39,10 @@ export class HomePageComponent implements OnInit , OnDestroy {
   /**
    * country details
    */
-  goToDetail(event:string){
-      this.router.navigate(['/detail',event.toLowerCase()])
-  }
-  /**
-   * Resize Grid view
-   */
-  getBreakpoint(): number {
-    if (window.innerWidth >= 1024) {
-      return 4;
-    } else if (window.innerWidth >= 768 && window.innerWidth < 1023) {
-      return 2;
-    } else {
-      return 1;
-    }
+  goToDetail(event: string) {
+    this.router.navigate(['/detail', event.toLowerCase()])
   }
 
-  onResize(event) {
-    console.log('event', event.target.innerWidth)
-    this.breakpoint = event.target.innerWidth >= 1024
-      ? 4
-      : event.target.innerWidth >= 768 && window.innerWidth < 1023
-        ? 2
-        : 1;
-  }
   /**
    * Api Call for all the countries
    */

@@ -1,4 +1,4 @@
-<div class="main_container" *ngIf="!isLoading;else Loading">
+<div class="main_container" *ngIf="!isLoading">
     <div class="button_section">
         <button class="button Nunito-Light" (click)="goHome()">
             Back
@@ -30,8 +30,11 @@
                     </div>
                 </div>
             </div>
-            <div><span class="Nunito-Bold">Border Countries:</span>
-            <button class="button" style="margin-left: 0.25rem;" *ngFor="let border of country.borders">
+            <div class="border-container"><span class="Nunito-Bold">Border Countries: </span>
+            <button class="button" 
+            style="margin-right: 0.25rem;" 
+            *ngFor="let border of country.borders"
+            [routerLink]="['/detail',border]" routerLinkActive="router-link-active" >
                 {{border}}
             </button>
             </div>
@@ -39,6 +42,6 @@
 
     </div>
 </div>
-<ng-template #Loading>
-    Loading...
-</ng-template>
+<div *ngIf="isLoading" class="loading_container">
+  <mat-spinner></mat-spinner>
+</div>

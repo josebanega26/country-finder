@@ -47,4 +47,13 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .Nunito-Light{
     font-family: $LIGHT-FONT!important;
 }
+.loading_container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+}
+.mat-spinner circle {
+ stroke: $INPUT-COLOR ;
+}
 

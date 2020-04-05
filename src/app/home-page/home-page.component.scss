@@ -35,10 +35,10 @@
     grid-template-columns: repeat(4,minmax(267.75px, 1fr));
     column-gap: 3.5rem;
     row-gap: 3.5rem;
-    @media (max-width:769px) {
+    @media (min-width:493px)and (max-width:769px) {
         grid-template-columns: repeat(2,minmax(267.75px, 1fr));
     }
-    @media (max-width:426px) {
+    @media (max-width:492px) {
         grid-template-columns: repeat(1,minmax(267.75px, 1fr));
     }    
  

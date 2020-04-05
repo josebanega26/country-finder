@@ -6,7 +6,7 @@
      [alt]="country.name">
       <mat-card-content>
     <h3 class="Nunito-Bold"> {{country.name}}</h3>
-    <p><span class="Nunito-Bold">Population: </span>{{country.population}}</p>
+    <p><span class="Nunito-Bold">Population: </span>{{country.population | number}}</p>
     <p><span class="Nunito-Bold">Region: </span>{{country.region}}</p>
     <p><span class="Nunito-Bold">Capital: </span>{{country.capital}}</p>
   </mat-card-content>

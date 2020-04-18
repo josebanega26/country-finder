@@ -53,7 +53,6 @@ export class HomePageComponent implements OnInit, OnDestroy {
       .subscribe((response: Countries[]) => {
         this.isLoading = false;
         this.countries = response;
-        console.log("data", response);
       });
   }
 }

@@ -38,7 +38,6 @@ export class CountryDetailPageComponent implements OnInit, OnDestroy {
       this.titleService.setTitle(`Country Finder | Detail of ${country.name}`)
       this.country = country;
       this.formatingLanguage(this.country.languages);
-      console.log("country", country);
     });
   }
 
